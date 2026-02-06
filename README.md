@@ -1,4 +1,4 @@
-# Syntax Meets Semantics: Understanding Scientific Formula
+## Syntax Meets Semantics: Understanding Scientific Formula
 
 Scientific formulae are a core component of scholarly knowledge, yet their dual nature -- as **structured syntax** (e.g., symbols, operators, functions) and carriers of **semantic meaning** -- remains underexplored in scholarly information retrieval. 
 A comprehensive understanding of scientific formula therefore requires modeling both modalities. 
@@ -11,6 +11,6 @@ We ask two key questions:
 
 -----
 
-## Implementation
+### Implementation
 
 _(readme to be updated)_
