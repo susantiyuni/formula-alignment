@@ -14,8 +14,8 @@ np.random.seed(SEED)
 random.seed(SEED)
 
 print (f"Loading formulae representations...")
-X_struct = np.load("X_struct.npy")
-X_sem    = np.load("X_sem.npy")
+X_struct = np.load("data/X_struct.npy")
+X_sem    = np.load("data/X_sem.npy")
 
 print("X_struct shape:", X_struct.shape)
 print("X_sem shape:", X_sem.shape)
