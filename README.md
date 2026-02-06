@@ -11,6 +11,19 @@ We ask two key questions:
 
 -----
 
-### Implementation
+### Dependencies
+First, install all dependencies by running:
+
+```
+pip install -r requirements.txt
+```
+
+### Raw Alignment Analysis
+
+```
+python src/raw_alignment_analysis.py
+```
+
+### Learning Cross-Modal Alignment
 
 _(readme to be updated)_
