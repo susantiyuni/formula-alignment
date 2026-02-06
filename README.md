@@ -26,4 +26,4 @@ python src/raw_alignment_analysis.py
 
 ### Learning Cross-Modal Alignment
 
-_(readme to be updated)_
+_(complete readme to be updated)_
