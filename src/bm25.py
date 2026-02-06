@@ -9,8 +9,8 @@ import numpy as np
 from tqdm import tqdm
 from rank_bm25 import BM25Okapi
 
-from utils.seed import set_seed
-from utils.metrics import retrieval_metrics
+from utils import set_seed
+from utils import retrieval_metrics
 
 from mathml_parser import parse_mathml_tree, mathml_to_opt
 from rep_semantics import build_semantic_texts
