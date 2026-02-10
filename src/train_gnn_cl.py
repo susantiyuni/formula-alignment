@@ -39,8 +39,8 @@ from losses import contrastive_loss, intra_modal_loss
 SEED = 42
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-DATA_FILE = "formula-eg-grouped.jsonl"
-FOLDS_DIR = "data-cat"
+DATA_FILE = "data/formula-eg.jsonl"
+FOLDS_DIR = "data"
 
 BATCH_SIZE = 128
 EPOCHS = 200
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     X_sem_vec = get_or_cache_embeddings(
         sem_texts,
         sem_encoder,
-        "cache_global_sem.npy",
+        "data/cache_global_sem.npy",
         DEVICE
     )
 
