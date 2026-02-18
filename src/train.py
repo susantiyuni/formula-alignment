@@ -41,13 +41,27 @@ parser.add_argument(
     choices=["dense_noalign", "dual_encoder", "simcse"],
     help="Baseline type to run."
 )
+parser.add_argument(
+    "--encoder_type",
+    type=str,
+    default="sbert",
+    choices=["sbert", "mathbert"],
+    help="Encoder backbone to use."
+)
 
 args = parser.parse_args()
 BASELINE_TYPE = args.baseline_type
-
 print(f"\nUsing baseline: {BASELINE_TYPE}")
-
 # BASELINE_TYPE = "dense_noalign"  # dual_encoder | simcse | dense_noalign
+ENCODER_TYPE = args.encoder_type
+if ENCODER_TYPE == "sbert":
+    MODEL_NAME = "all-mpnet-base-v2"
+elif ENCODER_TYPE == "mathbert":
+    MODEL_NAME = "tbs17/MathBERT"
+
+print(f"Using encoder: {ENCODER_TYPE} ({MODEL_NAME})")
+
+
 EMB_DIM = 256
 EPOCHS = 200
 BATCH_SIZE = 128
@@ -245,18 +259,25 @@ for fold in ["1", "2", "3", "4", "5"]:
 
     if BASELINE_TYPE == "dense_noalign":
 
-        encoder = to_sbert("tbs17/MathBERT")
+        # encoder = to_sbert("tbs17/MathBERT")
+        encoder = to_sbert(MODEL_NAME)
 
         Zs_test = encode_and_cache(struct_test, encoder, f"s_test_{fold}.npy")
         Zt_test = encode_and_cache(sem_test, encoder, f"t_test_{fold}.npy")
 
     elif BASELINE_TYPE == "dual_encoder":
 
+        # enc_s = to_sbert("all-mpnet-base-v2")
+        # enc_t = to_sbert("all-mpnet-base-v2")
         enc_s = to_sbert("all-mpnet-base-v2")
         enc_t = to_sbert("all-mpnet-base-v2")
+        hidden_dim = enc_s.get_sentence_embedding_dimension()
+        
+        proj_s = nn.Linear(hidden_dim, EMB_DIM).to(device)
+        proj_t = nn.Linear(hidden_dim, EMB_DIM).to(device)
 
-        proj_s = nn.Linear(768, EMB_DIM).to(device)
-        proj_t = nn.Linear(768, EMB_DIM).to(device)
+        # proj_s = nn.Linear(768, EMB_DIM).to(device)
+        # proj_t = nn.Linear(768, EMB_DIM).to(device)
 
         Xs = encode_and_cache(struct_train, enc_s, f"s_train_{fold}.npy")
         Xt = encode_and_cache(sem_train, enc_t, f"t_train_{fold}.npy")
