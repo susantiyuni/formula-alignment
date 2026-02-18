@@ -21,7 +21,7 @@ from rep_semantics import build_semantic_texts
 # ======================================================
 
 SEED = 42
-DATA_FILE = "data/formula-eg-grouped.jsonl"
+DATA_FILE = "data/formula-eg.jsonl"
 FOLDS_DIR = "data"
 
 
