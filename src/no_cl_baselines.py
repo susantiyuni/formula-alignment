@@ -11,6 +11,8 @@ from lxml import etree
 from tqdm import tqdm
 from torch.utils.data import TensorDataset, DataLoader
 from sentence_transformers import SentenceTransformer, models
+import argparse
+
 
 # =========================================================
 # Setup
@@ -26,7 +28,26 @@ torch.cuda.manual_seed_all(SEED)
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
 
-BASELINE_TYPE = "dense_noalign"  # dual_encoder | simcse | dense_noalign
+# =========================================================
+# Argument parsing
+# =========================================================
+
+parser = argparse.ArgumentParser(description="Run baseline alignment experiments.")
+
+parser.add_argument(
+    "--baseline_type",
+    type=str,
+    default="dense_noalign",
+    choices=["dense_noalign", "dual_encoder", "simcse"],
+    help="Baseline type to run."
+)
+
+args = parser.parse_args()
+BASELINE_TYPE = args.baseline_type
+
+print(f"\nUsing baseline: {BASELINE_TYPE}")
+
+# BASELINE_TYPE = "dense_noalign"  # dual_encoder | simcse | dense_noalign
 EMB_DIM = 256
 EPOCHS = 200
 BATCH_SIZE = 128
