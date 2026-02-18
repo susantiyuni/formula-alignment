@@ -36,5 +36,3 @@ Run the cross-modal alignment training with:
 ./run_all.sh  
 ```
 This will run all methods across all 5 cross-validation data splits as described in the paper.
-
-_(complete readme to be updated after anonymous period concludes)_
