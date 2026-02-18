@@ -61,7 +61,8 @@ elif ENCODER_TYPE == "mathbert":
 
 print(f"Using encoder: {ENCODER_TYPE} ({MODEL_NAME})")
 
-
+DATA_FILE = "data/formula-eg.jsonl"
+FOLDS_DIR = "data"
 EMB_DIM = 256
 EPOCHS = 200
 BATCH_SIZE = 128
@@ -71,7 +72,7 @@ TEMP = 0.07
 # Data
 # =========================================================
 
-with open("formula-eg-grouped.jsonl") as f:
+with open(DATA_FILE) as f:
     data = [json.loads(line) for line in f]
 
 
@@ -237,11 +238,11 @@ all_s2t, all_t2s = [], []
 for fold in ["1", "2", "3", "4", "5"]:
 
     print(f"\n===== Fold {fold} =====")
-
-    with open(f"data/fold_{fold}_train.jsonl") as f:
+    
+    with open(f"{FOLDS_DIR}/fold_{fold}_train.jsonl") as f:
         train_rows = [json.loads(l) for l in f]
 
-    with open(f"data/fold_{fold}_val.jsonl") as f:
+    with open(f"{FOLDS_DIR}/fold_{fold}_val.jsonl") as f:
         test_rows = [json.loads(l) for l in f]
 
     item_to_idx = {r["item"]: i for i, r in enumerate(data)}
