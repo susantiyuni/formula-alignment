@@ -20,9 +20,13 @@ pip install -r requirements.txt
 
 ### Raw Alignment Analysis
 
+Run the natural alignment of both modalities with:
+
 ```
 python src/raw_alignment_analysis.py
 ```
+
+This will produce all alignment score analyses as described in the paper.
 
 ### Learning Cross-Modal Alignment
 
