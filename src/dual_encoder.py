@@ -23,6 +23,7 @@ from metrics import retrieval_metrics
 from mathml_parser import parse_mathml_tree, mathml_to_opt
 from rep_semantics import build_semantic_texts
 from losses import contrastive_loss, intra_modal_loss
+import argparse
 
 
 # ======================================================
@@ -31,12 +32,8 @@ from losses import contrastive_loss, intra_modal_loss
 
 SEED = 42
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-DATA_FILE = "formula-eg-grouped.jsonl"
-FOLDS_DIR = "data-cat"
-
-MODEL_NAME = "allenai/scibert_scivocab_uncased"
-
+DATA_FILE = "data/formula-eg.jsonl"
+FOLDS_DIR = "data"
 PROJ_DIM = 256
 EPOCHS = 200
 BATCH_SIZE = 128
@@ -208,6 +205,22 @@ def train_fold(k, data, struct_texts, semantic_texts):
 
 if __name__ == "__main__":
 
+    parser = argparse.ArgumentParser(
+        description="Dual-encoder contrastive baseline"
+    )
+
+    parser.add_argument(
+        "--model_name",
+        type=str,
+        default="tbs17/MathBERT",
+        help="HuggingFace model name (e.g. all-mpnet-base-v2, tbs17/MathBERT)"
+    )
+
+    args = parser.parse_args()
+    MODEL_NAME = args.model_name
+
+    print(f"\nUsing model: {MODEL_NAME}\n")
+    
     set_seed(SEED)
 
     data = load_jsonl(DATA_FILE)
