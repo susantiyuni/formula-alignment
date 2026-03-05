@@ -36,4 +36,4 @@ Run the cross-modal alignment training with:
 ```
 ./run_all.sh  
 ```
-This will run all methods across all 5 cross-validation data splits as described in the paper.
+This will run all methods ([`src/train_no_cl.py`](./src/train_no_cl.py), [`src/dual_encoder.py`](./src/dual_encoder.py), [`src/train_cl.py`](./src/train_gnn_cl.py)) across all 5 cross-validation data splits as described in the paper.
