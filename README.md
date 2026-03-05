@@ -2,7 +2,7 @@
 
 A comprehensive understanding of scientific formulae requires modeling two fundamentally different formula modalities: 
 
-(1) **structured syntax** (e.g., symbols, operators, functions) and (2) carriers of **semantic meaning**.
+**(1) structured syntax** (e.g., _symbols, operators, functions_) and **(2) semantic meaning**
 
 We ask two research questions: 
 
@@ -36,4 +36,6 @@ Run the cross-modal alignment training with:
 ```
 ./run_all.sh  
 ```
-This will run all methods ([`src/train_no_cl.py`](./src/train_no_cl.py), [`src/dual_encoder.py`](./src/dual_encoder.py), [`src/train_cl.py`](./src/train_gnn_cl.py)) across all 5 cross-validation data splits as described in the paper.
+This will run all methods described in the paper across the 5 cross-validation data splits. 
+
+All required resources, including formula data, the 5-fold split files, and the structured and semantic modality vector data, are provided in the [`data`](./data) directory. 
