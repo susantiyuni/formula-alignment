@@ -38,4 +38,4 @@ Run the cross-modal alignment training with:
 ```
 This will run all methods described in the paper across the 5 cross-validation data splits. 
 
-All required resources, including formula data, the 5-fold split files, and the structured and semantic modality vector data, are provided in the [`data`](./data) directory. 
+All required resources, including formula data, the 5-fold split files, and the structured and semantic modality vector data, are provided in the [`data`](./data/) directory. 
